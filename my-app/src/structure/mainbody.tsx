@@ -9,6 +9,7 @@ import {
   Badge,
 } from "@radix-ui/themes";
 import { HomePage } from "../pages/home";
+
 interface BaseComponentProps {
   showToast?: any;
   inputStyle?: any; // optional
@@ -34,9 +35,10 @@ export const Mainbody: React.FC<BaseComponentProps> = ({
           >About</Tabs.Trigger>
         </Tabs.List>
 
-        <Box mt="3">
+        <Box mt="4">
           <Tabs.Content value="home">
             <HomePage showToast={showToast} inputStyle={inputStyle}/>
+      
           </Tabs.Content>
 
           <Tabs.Content value="components">

@@ -2,50 +2,36 @@ html, body, #root { height: 100%; margin: 0; padding: 0; }
 * { box-sizing: border-box; }
 
 .radix-tabs .tabs-list {
-  display: inline-flex;
-  gap: 8px;
   border: 0 !important;
   box-shadow: none !important;
   background: transparent;
 }
 
-/* base + active state */
-.radix-tabs .tabs-trigger {
-  appearance: none;
-  border: none;            /* <- no quotes */
-  box-shadow: none;        /* <- no quotes */
-  background: transparent;
-  padding: 12px 20px;      /* bigger click area */
-  font-size: 1.0625rem;    /* a bit larger text */
-  line-height: 1;
-  border-radius: 10px;     /* smoother */
-  cursor: pointer;
-  transition: background 140ms ease, transform 120ms ease, box-shadow 140ms ease;
-}
-
-/* hover/focus states for feel + accessibility */
-.radix-tabs .tabs-trigger:hover {
-  background: var(--gray-a3);
-}
-.radix-tabs .tabs-trigger:focus-visible {
-  outline: 2px solid var(--accent-8);
-  outline-offset: 2px;
-}
-
-/* pressed micro-interaction */
-.radix-tabs .tabs-trigger:active {
-  transform: translateY(1px);
-}
-
-/* active tab “pill” */
+/* remove any border/underline/shadow, incl. “active” styles */
+.radix-tabs .tabs-trigger,
 .radix-tabs .tabs-trigger[data-state='active'] {
-  background: var(--color-surface);
-  box-shadow: var(--shadow-2);
+  border: 0 !important;
+  border-bottom: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent; /* or your own bg */
 }
 
-/* content spacing */
-.radix-tabs .tabs-content {
-  padding: 1rem 0 0;
-  border: none;            /* <- no quotes */
-  box-shadow: none;        /* <- no quotes */
+/* just in case a pseudo-element is used as an underline somewhere */
+.radix-tabs .tabs-trigger::after {
+  content: none !important;
+}
+.tabs-trigger {
+  padding: 12px 24px;  /* bigger click area */
+  font-size: 1.125rem; /* ≈ text-lg */
+  border-radius: 8px;
+  border: "none";
+  box-shadow: "none";
+}
+
+.tabs-content {
+  padding: 1.5rem;
+  font-size: 1rem;
+  border: "none";
+  box-shadow: "none";
 }
