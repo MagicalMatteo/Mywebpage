@@ -4,6 +4,7 @@ import * as Tooltip from "@radix-ui/react-tooltip";
 import RotatingFieldForm from "../form/RotatingFieldForm";
 import ScrollProgressBar from "../components/ScrollProgressBar";
 import { TextBlock } from "../components/TextComponents/TextBlock";
+import PortfolioHeader from "../components/PortoflioHeader";
 
 interface BaseComponentProps {
   showToast?: any;
@@ -23,11 +24,8 @@ export const HomePage: React.FC<BaseComponentProps> = ({ showToast, inputStyle }
       }}
     >
       <Flex direction="column" gap="3">
-        <Heading size="4">Welcome 👋</Heading>
-        <Text size="3" color="gray">
-          This page showcases Radix Themes + Primitives in a single React file.
-          Try the dialog, dropdown, tooltips, tabs, and toast.
-        </Text>
+
+        <PortfolioHeader/>
 
         <RotatingFieldForm />
 
