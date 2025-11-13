@@ -3,13 +3,19 @@ import * as Progress from "@radix-ui/react-progress";
 
 type ScrollProgressBarProps = {
   /** Labels evenly spaced along the bar, alternating left/right */
-  labels?: string[];
+  labels?: React.ReactNode[];
   /** Bar height in px */
   height?: number;
   /** Bar thickness in px */
   thickness?: number;
   /** Gap from bar to label in px */
   labelGap?: number;
+  /** Top space before the first label (px) */
+  topPadding?: number;
+  /** Bottom space after the last label (px) */
+  bottomPadding?: number;
+  /** Maximum percentage the bar should fill (0–100) */
+  maxFillPercent?: number;
 };
 
 export default function ScrollProgressBar({
@@ -17,6 +23,9 @@ export default function ScrollProgressBar({
   height = 360,
   thickness = 8,
   labelGap = 8,
+  topPadding = 24,
+  bottomPadding = 0,
+  maxFillPercent = 80,
 }: ScrollProgressBarProps) {
   const [value, setValue] = useState(0); // scroll progress %
   const raf = useRef<number | null>(null);
@@ -59,8 +68,12 @@ export default function ScrollProgressBar({
     };
   }, []);
 
-  // convert progress % -> 0–1 ratio
-  const progressRatio = value / 100;
+  // Clamp fill to maxFillPercent
+  const clampedValue = Math.min(value, maxFillPercent);
+  const progressRatio = clampedValue / 100;
+
+  // height available for placing labels after padding
+  const usableHeight = Math.max(0, height - topPadding - bottomPadding);
 
   return (
     <div
@@ -82,7 +95,7 @@ export default function ScrollProgressBar({
       >
         {/* progress bar */}
         <Progress.Root
-          value={value}
+          value={clampedValue}
           aria-label="Scroll progress"
           style={{
             width: thickness,
@@ -100,9 +113,9 @@ export default function ScrollProgressBar({
                 top: 0,
                 left: 0,
                 width: "100%",
-                height: `${value}%`,
+                height: `${clampedValue}%`,
                 transition: "height 120ms linear",
-                background: "var(--indigo-9, #3b82f6)",
+                background: "#b541d8ff",
               }}
             />
           </Progress.Indicator>
@@ -112,12 +125,12 @@ export default function ScrollProgressBar({
         {labels.map((label, i) => {
           const fraction =
             labels.length > 1 ? i / (labels.length - 1) : 0.5;
-          const top = fraction * height;
+          const top = topPadding + fraction * usableHeight;
           const isLeft = i % 2 === 0;
 
           // highlight if scrolled past this label
           const isActive = fraction <= progressRatio;
-          const activeColor = "var(--indigo-9, #3b82f6)";
+          const activeColor = "#b541d8ff";
           const inactiveColor = "var(--gray-9, #888)";
           const color = isActive ? activeColor : inactiveColor;
 
