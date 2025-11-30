@@ -1,0 +1,26 @@
+/* Base banner container */
+.image-banner {
+  width: 100%;
+  background-size: cover;
+  background-position: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 2rem;
+  min-height: 300px;
+
+  /* Uses theme variables */
+  color: var(--text);      /* Light + Dark responsive */
+}
+
+/* Text Block */
+.image-banner-text {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  max-width: 60%;
+}
+

@@ -1,0 +1,54 @@
+/* ===============================
+   PROFILE PAGE THEME (USING VARS)
+=============================== */
+
+.profile-page {
+  background: var(--bg);
+  color: var(--text);
+  transition: background .3s, color .3s;
+}
+
+/* Section Layout */
+.profile-section {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Headings */
+.profile-title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--text);
+  border-left: 4px solid var(--accent);
+  padding-left: .6rem;
+}
+
+/* Body text */
+.profile-content {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-soft);
+  opacity: 0.9;
+}
+
+/* List styling */
+.profile-list li {
+  padding-left: .75rem;
+  border-left: 2px solid var(--accent);
+}
+
+/* Card (Glass components styled by theme) */
+.profile-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(14px);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--glass-glow);
+  transition: .3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px var(--shadow);
+}
