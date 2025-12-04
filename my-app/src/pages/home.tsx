@@ -9,9 +9,9 @@ export const HomePage = () => {
       <ProfilePage.Section id="home">
         <ImageBanner text={
           <>
-          <h1 className="text-4xl font-bold">Hi I'm Matteo</h1>
+          <h1 className="sm:text-2xl md:text-4xl lg:text-8xl font-bold">Hi I'm Matteo</h1>
           <p className="text-lg opacity-80">Full-Stack Developer — React + Spring Boot</p>
-          <p>Turning complex financial logic into clear, scalable architecture.</p>
+          <p className="text-lg hidden md:block">Turning complex financial logic into clear, scalable architecture.</p>
           </>
         } imageUrl={chill} height="500px"/>
 

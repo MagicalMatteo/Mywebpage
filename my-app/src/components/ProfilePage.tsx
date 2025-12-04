@@ -2,7 +2,7 @@ import "../styles/ProfilePage.css"; //  🔥 NEW import – nothing else removed
 import { Glass } from "./Glass";
 
 export const ProfilePage = ({ children }: { children: React.ReactNode }) => (
-  <div className="profile-page min-h-screen w-full flex flex-col gap-14 px-10 py-16 max-w-6xl mx-auto">
+  <div className="profile-page min-h-screen w-full flex flex-col gap-14">
     {children}
   </div>
 );

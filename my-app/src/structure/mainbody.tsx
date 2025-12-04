@@ -6,7 +6,7 @@ export const Mainbody = () => {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "70px" }}>
+      <div style={{ paddingTop: "50px" }}>
         <HomePage />
       </div>
     </>
